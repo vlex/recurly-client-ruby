@@ -640,7 +640,8 @@ module Recurly
       if attributes.key? key
         value = attributes[key]
       elsif links.key?(key) && self.class.reflect_on_association(key)
-        value = attributes[key] = follow_link key
+        attributes[key] = follow_link key
+        value = attributes[key]
       end
       value
     end
